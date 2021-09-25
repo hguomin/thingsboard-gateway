@@ -36,6 +36,9 @@ from thingsboard_gateway.tb_utility.tb_remote_shell import RemoteShell
 from thingsboard_gateway.tb_utility.tb_updater import TBUpdater
 from thingsboard_gateway.tb_utility.tb_utility import TBUtility
 
+#By Guomin Huang
+from thingsboard_gateway.az_client.az_iothub_client import AzIoTHubClient
+
 log = logging.getLogger('service')
 main_handler = logging.handlers.MemoryHandler(-1)
 
@@ -86,7 +89,15 @@ class TBGatewayService:
         self.__rpc_register_queue = Queue(-1)
         self.__rpc_requests_in_progress = {}
         self.__connected_devices_file = "connected_devices.json"
-        self.tb_client = TBClient(self.__config["thingsboard"], self._config_dir)
+
+        #By Guomin Huang
+        self.__server_config = self.__config["upstream"].get("server", "thingsboard")
+        if self.__server_config == "azure":
+            self.tb_client = AzIoTHubClient(self.__config[self.__server_config], self._config_dir)
+        else:
+            self.tb_client = TBClient(self.__config["thingsboard"], self._config_dir)
+        
+
         self.tb_client.connect()
         self.subscribe_to_required_topics()
         self.__subscribed_to_rpc_topics = True

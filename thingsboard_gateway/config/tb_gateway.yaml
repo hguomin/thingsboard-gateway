@@ -1,3 +1,12 @@
+upstream:
+  server: azure  #azure | thingsboard
+
+azure:
+  iothub: PUT_YOUR_IOTHUB_NAME
+  deviceId: PUT_DEVICE_ID_FOR_THIS_GATEWAY
+  deviceSasToken: PUT_DEVICE_SAS_TOKEN
+  keep_alive: 120
+
 thingsboard:
   host: thingsboard.cloud
   port: 1883
