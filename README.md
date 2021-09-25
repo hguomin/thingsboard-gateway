@@ -1,5 +1,10 @@
 
-> NOTE: This branch adds support for Azure IoT Hub as upstream broker server, which means your can send device telemetry to Azure IoT Hub through the [Thingsboard IoT Gateway](https://thingsboard.io/docs/iot-gateway/).  
+> NOTE: This branch adds support for Azure IoT Hub as upstream broker server, which means your can send device telemetry to Azure IoT Hub through the [Thingsboard IoT Gateway](https://thingsboard.io/docs/iot-gateway/).   
+>
+> ![**Azure IoT Hub with Thingsboard gateway**](./az_tb_gw_integration.png)  
+>  
+>  
+>Read [this document](./thingsboard_gateway/az_client/readme.md) to learn how it works.
   
   
 # ThingsBoard IoT Gateway  
